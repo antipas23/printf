@@ -12,7 +12,6 @@ int print_string(const va_list b);
 int print_modulo(const va_list list);
 int num_digits(int n);
 void print_num(int n);
-int print_b(const va_list);
 int len(const char *s);
 
 #endif
