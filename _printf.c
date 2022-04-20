@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * print_char - char
- * @a: argument
+ * print_char - character
+ * @a: agrument
+ *
  * Return: 1
-**/
+ */
 
 int print_char(const va_list a)
 {
@@ -15,9 +16,9 @@ int print_char(const va_list a)
 }
 /**
  * print_string - string
- * @b: argu
- * Return: length os char
-**/
+ * @b: agrument
+ * Return: length of char
+ */
 
 int print_string(const va_list b)
 {
@@ -36,10 +37,30 @@ int print_string(const va_list b)
 	return (count);
 }
 /**
+ * len - length of char
+ * @s: char
+ *
+ * Return: length
+ */
+int len(const char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+
+	return (i);
+}
+
+/**
  * print_modulo - print %
  * @list: int
+ *
  * Return: 1
-**/
+ */
 
 int print_modulo(const va_list __attribute__((unused)) list)
 {
@@ -47,20 +68,19 @@ int print_modulo(const va_list __attribute__((unused)) list)
 	return (1);
 }
 /**
- * _printf - function char and string
- * @format: format
- * Description: function that
+ * _printf - function cahr and string
+ * @format: format specifier
+ * Description: function that print cahr and string
  * Return: char and string
-**/
-
+ */
 int _printf(const char *format, ...)
 {
-	char fmt[] = {'c', 's', '%'};
+	char fmt[] = {'c', 's', '%', 'd', 'i', 'b'};
 	va_list args;
 	int i, j, count, flag;
 
 	int (*fp[])(const va_list) = {print_char, print_string,
-		print_modulo};
+		print_modulo, print_n, print_n, print_b};
 
 	va_start(args, format);
 	i = j = count = flag = 0;
@@ -77,9 +97,9 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			while (format[i + 1] != fmt[j] && j < 3)
+			while (format[i + 1] != fmt[j] && j < 6)
 				j++;
-			if (j < 3)
+			if (j < 6)
 			{
 				flag = fp[j](args);
 				if (flag == -1)
