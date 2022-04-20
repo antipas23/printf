@@ -9,7 +9,7 @@
 int print_char(const va_list a)
 {
 	char c;
-	
+
 	c = va_arg(a, int);
 	return (_putchar(c));
 }
@@ -26,7 +26,7 @@ int print_string(const va_list b)
 
 	r = va_arg(b, char*);
 	if (r == NULL)
-		return(0);
+		return (0);
 	while (*r != '\0')
 	{
 		_putchar(*r);
@@ -48,8 +48,8 @@ int print_modulo(const va_list __attribute__((unused)) list)
 }
 /**
  * _printf - function char and string
- * @format: format 
- * Description: function that 
+ * @format: format
+ * Description: function that
  * Return: char and string
 **/
 
