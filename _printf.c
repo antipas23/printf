@@ -55,12 +55,12 @@ int print_modulo(const va_list __attribute__((unused)) list)
 
 int _printf(const char *format, ...)
 {
-	char fmt[] = {'c', 's', '%'};
+	char fmt[] = {'c', 's', '%', 'd', 'i', 'b'};
 	va_list args;
 	int i, j, count, flag;
 
 	int (*fp[])(const va_list) = {print_char, print_string,
-		print_modulo};
+		print_modulo, print_n, print_n, print_b};
 
 	va_start(args, format);
 	i = j = count = flag = 0;
@@ -77,9 +77,9 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			while (format[i + 1] != fmt[j] && j < 3)
+			while (format[i + 1] != fmt[j] && j < 6)
 				j++;
-			if (j < 3)
+			if (j < 6)
 			{
 				flag = fp[j](args);
 				if (flag == -1)
